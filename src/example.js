@@ -1,4 +1,16 @@
 /**
+ * @apiDefine UserNotFoundError
+ *
+ * @apiError UserNotFound The id of the User was not found.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "UserNotFound"
+ *     }
+ */
+
+/**
  * @api {get} /user/:id Request User information
  * @apiName GetUser
  * @apiGroup User
@@ -13,12 +25,16 @@
  *       "firstname": "John",
  *       "lastname": "Doe"
  *     }
- * 
- * @apiError UserNotFound The id of the User was not found.
  *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "UserNotFound"
- *     }
+ * @apiUse UserNotFoundError
+ */
+
+/**
+ * @api {put} /user/ Modify User information
+ * @apiName PutUser
+ * @apiGroup User
+ *
+ * @apiParam {Number} id    User unique ID.
+ * @apiParam {String} [firstname] Firstname of the User.
+ * @apiParam {String} [lastname] Lastname of the User.
  */
